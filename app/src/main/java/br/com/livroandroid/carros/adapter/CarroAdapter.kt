@@ -47,7 +47,7 @@ class CarroAdapter(
             if (carro.urlFoto.trim().isEmpty()) {
                 img.setImageBitmap(null)
             } else {
-                Picasso.with(context).load(carro.urlFoto).fit().into(img)
+                Picasso.get().load(carro.urlFoto).fit().into(img)
             }
             holder.itemView.setOnClickListener { onClick(carro) }
         }
