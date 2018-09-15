@@ -30,11 +30,11 @@ class Prefs {
             get() = getInt("tabIdx")
             set(value) = putInt("tabIdx", value)
 
-//        fun isCacheOn(): Boolean {
-//            val context = CarrosApplication.getInstance().applicationContext
-//            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-//            val key = context.getString(R.string.key_fazer_cache)
-//            return prefs.getBoolean(key, false)
-//        }
+        fun isCacheOn(): Boolean {
+            val context = CarrosApplication.getInstance().applicationContext
+            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val key = context.getString(R.string.key_fazer_cache)
+            return prefs.getBoolean(key, false)
+        }
     }
 }

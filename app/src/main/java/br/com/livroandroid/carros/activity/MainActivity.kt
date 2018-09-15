@@ -37,6 +37,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         viewPager.offscreenPageLimit = 2
         viewPager.adapter = TabsAdapter(this, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
+
         // Cor branca no texto (a cor de fundo é definido no layout)
         val cor = ContextCompat.getColor(this, R.color.white)
         tabLayout.setTabTextColors(cor, cor)
@@ -113,7 +114,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 toast("Clicou em site do livro")
             }
             R.id.nav_item_settings -> {
-                toast("Clicou em configurações")
+                startActivity<ConfigActivity>()
             }
         }
         // Fecha o menu depois de tratar o evento

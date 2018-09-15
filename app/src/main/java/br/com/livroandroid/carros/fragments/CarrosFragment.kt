@@ -39,7 +39,7 @@ class CarrosFragment : Fragment() {
         recyclerView.itemAnimator = DefaultItemAnimator()
 
         swipeToRefresh.setOnRefreshListener {
-            taskCarros()
+            taskCarros(true)
         }
         swipeToRefresh.setColorSchemeResources(
                 R.color.refresh_progress_1,
@@ -59,7 +59,7 @@ class CarrosFragment : Fragment() {
                 return true
             }
             R.id.action_refresh-> {
-//                taskCarros()
+                taskCarros(true)
                 toast("Refresh")
                 return true
             }
@@ -70,11 +70,11 @@ class CarrosFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        taskCarros()
+        taskCarros(false)
 
     }
 
-    private fun taskCarros() {
+    private fun taskCarros(refresh: Boolean) {
 
         if(! swipeToRefresh.isRefreshing) {
             progress.visibility = View.VISIBLE
@@ -82,7 +82,7 @@ class CarrosFragment : Fragment() {
 
         doAsync {
 
-            val carros = CarroService.getCarros(tipo)
+            val carros = CarroService.getCarros(tipo, refresh)
 
             uiThread {
 
