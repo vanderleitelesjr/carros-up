@@ -3,21 +3,21 @@ package br.com.livroandroid.carros.domain
 import br.com.livroandroid.carros.domain.dao.DatabaseManager
 
 object FavoritosService {
+    private val dao = DatabaseManager.getCarroDAO()
+    
     // Retorna todos os carros favoritados
     fun getCarros(): List<Carro> {
-        val dao = DatabaseManager.getCarroDAO()
         return dao.findAll()
     }
+
     // Verifica se um carro está favoritado
-    fun isFavorito(carro: Carro) : Boolean {
-        val dao = DatabaseManager.getCarroDAO()
+    private fun isFavorito(carro: Carro) : Boolean {
         return dao.getById(carro.id) != null
     }
 
     // Salva o carro ou deleta
     fun favoritar(carro: Carro): Boolean {
         val favorito = isFavorito(carro)
-        val dao = DatabaseManager.getCarroDAO()
         if(favorito) {
             // Remove dos favoritos
             dao.delete(carro)
@@ -27,5 +27,4 @@ object FavoritosService {
         dao.insert(carro)
         return true
     }
-
 }

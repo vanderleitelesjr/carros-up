@@ -19,11 +19,20 @@ class CarroFormActivity : AppCompatActivity() {
 
         setupToolbar(R.id.toolbar, upNavigation = true)
 
-
+        btSalvar.setOnClickListener { onClickSalvar() }
     }
 
     private fun onClickSalvar() {
 
+        doAsync {
+            val c = Carro()
+            c.nome = tNome.text.toString()
+            c.desc = tDesc.text.toString()
+            c.tipo = TipoCarro.Classicos.name.toLowerCase()
 
+            CarroService.save(c)
+
+            toast("Carro salvo com sucesso")
+        }
     }
 }
