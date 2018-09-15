@@ -1,12 +1,14 @@
 package br.com.livroandroid.carros.domain
 
 import android.os.Build.VERSION_CODES.P
+import android.util.Base64
 import android.util.Log
 import br.com.livroandroid.carros.R.string.carros
 import br.com.livroandroid.carros.extensions.fromJson
 import br.com.livroandroid.carros.extensions.toJson
 import br.com.livroandroid.carros.utils.HttpHelper
 import br.com.livroandroid.carros.utils.Prefs
+import java.io.File
 
 object CarroService {
 
@@ -47,12 +49,28 @@ object CarroService {
         Log.d(TAG,response)
     }
 
-    fun delete(carro: Carro) {
+    fun delete(carro: Carro) : Response {
 
         val url = "$BASE_URL/${carro.id}"
 
         val response = HttpHelper.delete(url)
 
         Log.d(TAG,response)
+
+        return fromJson(response)
+    }
+
+    fun postFoto(file: File): Response {
+        val url = "$BASE_URL/postFotoBase64"
+
+        // Converte para Base64
+        val bytes = file.readBytes()
+        val base64 = Base64.encodeToString(bytes, Base64.NO_WRAP)
+
+        val params = mapOf("fileName" to file.name, "base64" to base64)
+
+        val json = HttpHelper.postForm(url, params)
+
+        return fromJson(json)
     }
 }

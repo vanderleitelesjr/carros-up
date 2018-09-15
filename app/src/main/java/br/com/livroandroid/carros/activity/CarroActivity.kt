@@ -46,9 +46,9 @@ class CarroActivity : AppCompatActivity() {
             }
         } else if(item?.itemId == R.id.action_deletar) {
             doAsync {
-                CarroService.delete(carro)
+                val response= CarroService.delete(carro)
 
-                toast("Carro deletado!")
+                toast(response.msg)
 
                 finish()
             }
