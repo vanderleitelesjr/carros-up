@@ -1,5 +1,7 @@
 package br.com.livroandroid.carros.activity
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -30,6 +32,16 @@ class CarroActivity : AppCompatActivity() {
         tNome.text = carro.nome
 
         img.loadUrl(carro.urlFoto)
+
+        // Toca o Vídeo
+        imgPlayVideo.setOnClickListener { onClickPlayVideo() }
+    }
+
+    private fun onClickPlayVideo() {
+        val url = carro.urlVideo
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(url), "video/*")
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

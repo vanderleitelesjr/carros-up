@@ -47,7 +47,7 @@ class CameraHelper {
     }
 
     // Cria o arquivo da foto no diretório privado do app
-    fun getSdCardFile(context: Context, fileName: String): File {
+    private fun getSdCardFile(context: Context, fileName: String): File {
         val dir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         if (!dir.exists()) {
             dir.mkdir()
