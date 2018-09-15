@@ -35,15 +35,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6dp" />
             <!-- Barra de progresso enquanto carrega a foto -->
-            <ProgressBar
-                android:id="@+id/progress"
-                style="@android:style/Widget.ProgressBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_vertical"
-                android:layout_marginRight="6dp"
-                android:gravity="center|center_vertical"
-                android:visibility="invisible" />
+            <include layout="@layout/include_progress" />
         </FrameLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -10,9 +10,12 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.domain.Carro
+import br.com.livroandroid.carros.extensions.loadUrl
 import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.adapter_carro.view.*
+import kotlinx.android.synthetic.main.include_progress.view.*
+
 class CarroAdapter(
         val carros: List<Carro>,
         val onClick: (Carro) -> Unit) : RecyclerView.Adapter<CarroAdapter.CarrosViewHolder>() {
@@ -44,11 +47,14 @@ class CarroAdapter(
             // Atualiza os dados do carro
             tNome.text = carro.nome
 
-            if (carro.urlFoto.trim().isEmpty()) {
-                img.setImageBitmap(null)
-            } else {
-                Picasso.get().load(carro.urlFoto).fit().into(img)
-            }
+            img.loadUrl(carro.urlFoto/*, progress*/)
+
+//            if (carro.urlFoto.trim().isEmpty()) {
+//                img.setImageBitmap(null)
+//            } else {
+//                Picasso.get().load(carro.urlFoto).fit().into(img)
+//            }
+
             holder.itemView.setOnClickListener { onClick(carro) }
         }
     }
