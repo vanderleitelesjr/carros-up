@@ -18,7 +18,8 @@ import kotlinx.android.synthetic.main.include_progress.view.*
 
 class CarroAdapter(
         val carros: List<Carro>,
-        val onClick: (Carro) -> Unit) : RecyclerView.Adapter<CarroAdapter.CarrosViewHolder>() {
+        val onClick: (Carro) -> Unit) :
+        RecyclerView.Adapter<CarroAdapter.CarrosViewHolder>() {
     // ViewHolder com as views
     class CarrosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -29,7 +30,8 @@ class CarroAdapter(
 
     // Infla o layout do adapter e retorna o ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrosViewHolder { // Infla a view do adapter
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_carro,
+        val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.adapter_carro,
                 parent, false)
         // Retorna o ViewHolder que contém todas as views
         return CarrosViewHolder(view)

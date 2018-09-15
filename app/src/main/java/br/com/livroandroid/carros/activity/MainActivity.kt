@@ -8,7 +8,9 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import br.com.livroandroid.carros.R
+import br.com.livroandroid.carros.adapter.TabsAdapter
 import br.com.livroandroid.carros.domain.TipoCarro
 import br.com.livroandroid.carros.extensions.setupToolbar
 import br.com.livroandroid.carros.extensions.toast
@@ -25,16 +27,24 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         setupToolbar(R.id.toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        initNavDrawer()
+        initViewPagerTabs()
+    }
 
+    private fun initViewPagerTabs() {
+        viewPager.offscreenPageLimit = 2
+        viewPager.adapter = TabsAdapter(this, supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
+        // Cor branca no texto (a cor de fundo é definido no layout)
+        val cor = ContextCompat.getColor(this, R.color.white)
+        tabLayout.setTabTextColors(cor, cor)
+    }
+
+    private fun initNavDrawer() {
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
     }
 
@@ -68,11 +78,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 toast("Clicou em carros")
             }
             R.id.nav_item_carros_classicos -> {
-                val intent = Intent(context, CarrosActivity::class.java)
-                intent.putExtra("tipo", TipoCarro.Classicos)
-                startActivity(intent)
+//                val intent = Intent(context, CarrosActivity::class.java)
+//                intent.putExtra("tipo", TipoCarro.Classicos)
+//                startActivity(intent)
 
-                //startActivity<CarrosActivity>("tipo" to TipoCarro.Classicos)
+                startActivity<CarrosActivity>("tipo" to TipoCarro.Classicos)
             }
             R.id.nav_item_carros_esportivos -> {
                 val intent = Intent(context, CarrosActivity::class.java)

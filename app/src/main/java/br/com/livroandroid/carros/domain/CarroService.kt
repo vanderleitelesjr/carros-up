@@ -11,7 +11,9 @@ object CarroService {
 
 
         val url = "$BASE_URL/tipo/${tipo.name.toLowerCase()}"
+
         val json = HttpHelper.get(url)
-        return fromJson<List<Carro>>(json)
+
+        return fromJson(json)
     }
 }

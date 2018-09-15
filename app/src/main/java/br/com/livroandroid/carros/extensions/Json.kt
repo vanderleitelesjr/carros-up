@@ -10,8 +10,7 @@ fun Any.toJson(prettyPrinting: Boolean = false): String {
     if (prettyPrinting) {
         builder.setPrettyPrinting()
     }
-    val json = builder.create().toJson(this)
-    return json
+    return builder.create().toJson(this)
 }
 
 // Converte JSON para objeto
