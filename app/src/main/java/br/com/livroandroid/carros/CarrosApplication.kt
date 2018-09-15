@@ -3,8 +3,9 @@ package br.com.livroandroid.carros
 import android.app.Application
 
 import android.util.Log
+import androidx.multidex.MultiDexApplication
 
-class CarrosApplication : Application() {
+class CarrosApplication : MultiDexApplication() {
     // Chamado quando o Android criar o processo do aplicativo
     override fun onCreate() {
         super.onCreate()

@@ -36,6 +36,7 @@ Versao %s<br><br>
     <!-- F -->
     <string name="favoritos">Favoritos</string>
     <string name="fazer_cache">Fazer cache dos carros.</string>
+    <string name="action_favoritar">Favoritar</string>
 
     <!-- H -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

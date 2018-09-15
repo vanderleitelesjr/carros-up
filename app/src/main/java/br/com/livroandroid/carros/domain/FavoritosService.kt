@@ -1,19 +1,17 @@
 package br.com.livroandroid.carros.domain
-import br.com.livroandroid.carros.CarrosApplication
+
 import br.com.livroandroid.carros.domain.dao.DatabaseManager
 
 object FavoritosService {
     // Retorna todos os carros favoritados
     fun getCarros(): List<Carro> {
         val dao = DatabaseManager.getCarroDAO()
-        val carros = dao.findAll()
-        return carros
+        return dao.findAll()
     }
     // Verifica se um carro está favoritado
     fun isFavorito(carro: Carro) : Boolean {
         val dao = DatabaseManager.getCarroDAO()
-        val exists = dao.getById(carro.id) != null
-        return exists
+        return dao.getById(carro.id) != null
     }
 
     // Salva o carro ou deleta
