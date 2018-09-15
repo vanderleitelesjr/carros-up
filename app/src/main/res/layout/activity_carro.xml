@@ -22,4 +22,11 @@
         android:layout_gravity="center"
         android:textSize="40sp"/>
 
+    <ImageView android:id="@+id/imgPlayVideo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:src="@drawable/play" />
+
 </LinearLayout>

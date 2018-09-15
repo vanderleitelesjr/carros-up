@@ -1,11 +1,14 @@
 package br.com.livroandroid.carros.activity
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.domain.Carro
+import br.com.livroandroid.carros.domain.CarroService
 import br.com.livroandroid.carros.domain.FavoritosService
 import br.com.livroandroid.carros.extensions.loadUrl
 import br.com.livroandroid.carros.extensions.setupToolbar
@@ -29,6 +32,16 @@ class CarroActivity : AppCompatActivity() {
         tNome.text = carro.nome
 
         img.loadUrl(carro.urlFoto)
+
+        // Toca o Vídeo
+        imgPlayVideo.setOnClickListener { onClickPlayVideo() }
+    }
+
+    private fun onClickPlayVideo() {
+        val url = carro.urlVideo
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(url), "video/*")
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,6 +55,14 @@ class CarroActivity : AppCompatActivity() {
                 val b = FavoritosService.favoritar(carro)
 
                 toast("Carro favoritado $b")
+            }
+        } else if(item?.itemId == R.id.action_deletar) {
+            doAsync {
+                val response= CarroService.delete(carro)
+
+                toast(response.msg)
+
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)

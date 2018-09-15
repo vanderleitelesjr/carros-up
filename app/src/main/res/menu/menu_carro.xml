@@ -4,4 +4,8 @@
         android:id="@+id/action_favoritar"
         android:title="@string/action_favoritar"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_deletar"
+        android:title="@string/action_deletar"
+        app:showAsAction="always" />
 </menu>
