@@ -41,7 +41,7 @@ class CarrosActivity : BaseActivity() {
 //            bundle.putSerializable("tipo",tipo)
 //            frag.arguments = bundle
 
-            t.add(R.id.frag,frag).commit()
+            t.replace(R.id.frag,frag).commit()
         }
     }
 
