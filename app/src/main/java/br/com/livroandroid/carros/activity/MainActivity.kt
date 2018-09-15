@@ -17,7 +17,6 @@ import br.com.livroandroid.carros.extensions.setupToolbar
 import br.com.livroandroid.carros.extensions.toast
 import br.com.livroandroid.carros.utils.Prefs
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import org.jetbrains.anko.startActivity
 
@@ -31,6 +30,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         initNavDrawer()
         initViewPagerTabs()
+
+        fab.setOnClickListener {
+            toast("Novo carro")
+        }
     }
 
     private fun initViewPagerTabs() {
