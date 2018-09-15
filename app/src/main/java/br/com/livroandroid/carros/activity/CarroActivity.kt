@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.domain.Carro
+import br.com.livroandroid.carros.domain.CarroService
 import br.com.livroandroid.carros.domain.FavoritosService
 import br.com.livroandroid.carros.extensions.loadUrl
 import br.com.livroandroid.carros.extensions.setupToolbar
@@ -42,6 +43,14 @@ class CarroActivity : AppCompatActivity() {
                 val b = FavoritosService.favoritar(carro)
 
                 toast("Carro favoritado $b")
+            }
+        } else if(item?.itemId == R.id.action_deletar) {
+            doAsync {
+                CarroService.delete(carro)
+
+                toast("Carro deletado!")
+
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)

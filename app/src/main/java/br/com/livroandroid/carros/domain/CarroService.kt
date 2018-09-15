@@ -46,4 +46,13 @@ object CarroService {
 
         Log.d(TAG,response)
     }
+
+    fun delete(carro: Carro) {
+
+        val url = "$BASE_URL/${carro.id}"
+
+        val response = HttpHelper.delete(url)
+
+        Log.d(TAG,response)
+    }
 }
