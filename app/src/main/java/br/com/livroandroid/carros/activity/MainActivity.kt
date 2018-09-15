@@ -32,7 +32,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initViewPagerTabs()
 
         fab.setOnClickListener {
-            toast("Novo carro")
+            startActivity<CarroFormActivity>()
         }
     }
 
